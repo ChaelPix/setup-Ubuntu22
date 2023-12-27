@@ -57,8 +57,10 @@ sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/v
 sudo apt install -y code
 
 #--Microsoft office web
-sudo snap install office365webdesktop --beta
+sudo snap install office365webdesktop --beta -y
 
+#--tree
+sudo apt install -y tree
 #-----------------------Git----------------------
 # #7 : Git Setup
 echo "#7: Setup Git"
