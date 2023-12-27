@@ -23,7 +23,7 @@ sudo apt install -y build-essential cmake git python3-colcon-common-extensions p
 
 # 
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
-source ~/.bashrc
+echo "alias pixdomain = 'export ROS_DOMAIN_ID=0'" >> ~/.bashrc
 
 # #4: Rosdep
 echo "#4: Init Rosdep"
@@ -68,7 +68,7 @@ git config --global user.name "ChaelPix"
 git config --global user.email "chael.pixel@gmail.com"
 
 #-----------------------SSH----------------------
-# #7 : SSH Setup
+# #8 : SSH Setup
 echo "#8: Setup SSH"
 if [ ! -f ~/.ssh/id_rsa ]; then
   echo "Creating ssh key.."
@@ -88,7 +88,11 @@ echo "Host *
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
-#-----------------------SSH----------------------
+#-----------------------Graphic Drivers----------------------
+echo "#9:  Installing graphic drivers"
+sudo ubuntu-drivers autoinstall
+
+#-----------------------END----------------------
 #--update bashrc
 source ~/.bashrc
 echo "Setup is finished, please close this terminal."
