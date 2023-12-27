@@ -11,3 +11,6 @@ Reminders of steps to do when install a fresh ubuntu.
 
 + edit su bashrc:
 <pre>sudo nano /root/.bashrc</pre>
+
++ remove cached folders git
+<pre>git rm -r --cached</pre>
