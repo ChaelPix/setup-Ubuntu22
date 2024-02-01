@@ -8,7 +8,7 @@
 - Pour changer de réseau wifi, faire changewifi x
 où x représente le réseau, par défaut h = home, r = robot.
 
-Reminders of steps to do when install a fresh ubuntu.
+# Reminders of steps to do when install a fresh ubuntu.
 
 + Launch setup:
 <pre>sudo chmod +x setup.sh
