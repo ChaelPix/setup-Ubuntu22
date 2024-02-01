@@ -1,13 +1,5 @@
 # Setup-Ubuntu22
 
-+ Setup ChangeWifi shortcut :
-<pre>nmcli con show</pre>
-- Récupérer les uuid des réseaux, les mettre dans changewifi.sh
-<pre>chmod +x create_changewifi_alias.sh
-./ create_changewifi_alias.sh</pre>
-- Pour changer de réseau wifi, faire changewifi x
-où x représente le réseau, par défaut h = home, r = robot.
-
 # Reminders of steps to do when install a fresh ubuntu.
 
 + Launch setup:
@@ -23,3 +15,11 @@ où x représente le réseau, par défaut h = home, r = robot.
 + remove cached folders git
 <pre>git rm -r --cached</pre>
 
+# Change Network Tool 
++ Setup ChangeWifi shortcut :
+<pre>nmcli con show</pre>
+- Récupérer les uuid des réseaux, les mettre dans changewifi.sh
+<pre>chmod +x create_changewifi_alias.sh
+./ create_changewifi_alias.sh</pre>
+- Pour changer de réseau wifi, faire changewifi x
+où x représente le réseau, par défaut h = home, r = robot.
