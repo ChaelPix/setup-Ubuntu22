@@ -6,5 +6,5 @@ if [ "$1" == "r" ]; then
 elif [ "$1" == "h" ]; then
     nmcli con up uuid 214daf21-96f6-426a-87c6-bdaaa0dc52d6
 else
-    echo "Changer de réseau wifi super rapidement. \n r : robot, h : home"
+    echo "Changer de réseau wifi super rapidement. r : robot, h : home"
 fi

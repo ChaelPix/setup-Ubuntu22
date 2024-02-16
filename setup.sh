@@ -1,5 +1,14 @@
 #!/bin/bash
 
+echo "Write your email address (for ssh-key gen)"
+read email
+
+echo "Write your email address (for git)"
+read gemail
+
+echo "Write your git username"
+read guser
+
 # #1: update and upgrade"
 echo "#1: update and upgrade"
 sudo apt update && sudo apt upgrade -y
@@ -23,7 +32,7 @@ sudo apt install -y build-essential cmake git python3-colcon-common-extensions p
 
 # 
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
-echo "alias pixdomain = 'export ROS_DOMAIN_ID=0'" >> ~/.bashrc
+echo "alias pixxdomain = 'export ROS_DOMAIN_ID=33'" >> ~/.bashrc
 
 # #4: Rosdep
 echo "#4: Init Rosdep"
@@ -48,16 +57,13 @@ cd sexy-bash-prompt
 make install
 source ~/.bashrc
 
-#--Sexy bash prompt
-echo "source ~/.bash_prompt" >> ~/.bashrc
-
 #--Visual Studio Code
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
 sudo apt install -y code
 
 #--Microsoft office web
-sudo snap install office365webdesktop --beta -y
+# sudo snap install office365webdesktop --beta -y
 
 #--tree
 sudo apt install -y tree
@@ -66,22 +72,22 @@ sudo apt install -y tree
 echo "#7: Setup Git"
 sudo apt install -y git
 
-git config --global user.name "ChaelPix"
-git config --global user.email "chael.pixel@gmail.com"
+git config --global user.name $guser
+git config --global user.email $gemail
 
 #-----------------------SSH----------------------
 # #8 : SSH Setup
 echo "#8: Setup SSH"
 if [ ! -f ~/.ssh/id_rsa ]; then
   echo "Creating ssh key.."
-  ssh-keygen -t rsa -b 4096 -C "chael.pixel@gmail.com" -N "" -f ~/.ssh/id_rsa
+  ssh-keygen -t rsa -b 4096 -C $email -N "" -f ~/.ssh/id_rsa
+  echo "ssh key created, you can use "showssh" to show it"
 else
   echo "already a ssh key"
 fi
 
 #--alias showssh
 echo "alias showssh='cat ~/.ssh/id_rsa.pub'" >> ~/.bashrc
-
 #--git ssh
 echo "Host *
   IdentityFile ~/.ssh/id_rsa" > ~/.ssh/config
