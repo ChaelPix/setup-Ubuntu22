@@ -84,6 +84,13 @@ ssh-add ~/.ssh/id_rsa
 echo "#9:  Installing graphic drivers"
 echo $sudo_password | sudo -S ubuntu-drivers autoinstall
 
+#-----------------------CHRONY----------------------
+echo "#10: Installing Chrony"
+echo $sudo_password | sudo -S apt install -y chrony
+echo $sudo_password | sudo -S cp ressources/chrony.conf /etc/chrony/chrony.conf
+echo $sudo_password | sudo -S systemctl restart chrony
+echo $sudo_password | sudo -S systemctl enable chrony
+
 #-----------------------END----------------------
 source ~/.bashrc
 echo "Setup is finished, please close this terminal."
