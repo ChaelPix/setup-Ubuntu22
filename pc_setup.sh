@@ -1,5 +1,14 @@
-echo "#1: update and upgrade"
-echo $sudo_password | sudo -S apt update && echo $sudo_password | sudo -S apt upgrade -y
+#!/bin/bash
+
+read -p "Enter your email address (for ssh-key and git): " email
+read -p "Enter your git username: " guser
+echo "Enter sudo password (it will not be displayed while you type):"
+read -s sudo_password
+echo $sudo_password | sudo -S echo "Sudo confirmed."
+
+"#1: update and upgrade"
+echo $sudo_password | sudo -S apt update
+echo $sudo_password | sudo -S apt upgrade -y
 
 #-----------------------ROS 2-----------------------
 # #2: Ros 2 sources
@@ -9,7 +18,7 @@ echo $sudo_password | sudo -S apt install -y software-properties-common
 echo $sudo_password | sudo -S add-apt-repository universe -y
 echo $sudo_password | sudo -S apt update && echo $sudo_password | sudo -S apt install curl -y
 echo $sudo_password | sudo -S curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | echo $sudo_password | sudo -S tee /etc/apt/sources.list.d/ros2.list > /dev/null
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo -S tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
 # #3: Ros2 Humble and dependencies
 echo "#3: Installing Ros2 Humble and dependencies"
@@ -28,7 +37,7 @@ rosdep update
 
 # #5 : Ros2 extras
 echo "#5: Installing ros2 extras"
-echo $sudo_password | sudo -S apt install -y gazebo11
+#echo $sudo_password | sudo -S apt install -y gazebo11
 echo $sudo_password | sudo -S apt install -y ros-humble-navigation2 ros-humble-nav2-bringup
 
 #-----------------------Tools----------------------
